@@ -32,4 +32,10 @@ class Mymodel extends CI_Model
         $res = $this->db->delete($table, $where);
         return $res;
     }
+
+    public function GetAcaraRelawan($id_relawan)
+    {
+        $res = $this->db->query("SELECT a.nama, ra.id_acara, ra.status, ra.id_relawan_acara FROM relawan_acara ra JOIN acara a ON ra.id_acara = a.id_acara WHERE ra.id_relawan='$id_relawan'");
+        return $res->result_array();
+    }
 }

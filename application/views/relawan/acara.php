@@ -18,6 +18,8 @@
   <!-- Custom styles for this template-->
   <link href="<?php echo base_url() . "assets/"; ?>css/sb-admin-2.css" rel="stylesheet">
 
+  <link href="<?php echo base_url() . "assets/"; ?>vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -100,13 +102,12 @@
 
         </nav>
         <!-- End of Topbar -->
-
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+            <h1 class="h3 mb-0 text-gray-800">ACARA</h1>
           </div>
 
           <!-- Content Row -->
@@ -116,11 +117,47 @@
               <!-- Approach -->
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">List Acara</h6>
                 </div>
                 <div class="card-body">
-                  <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce CSS bloat and poor page performance. Custom CSS classes are used to create custom components and custom utility classes.</p>
-                  <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
+                  <a class="btn btn-primary" href="<?= base_url() . "index.php/dashboardrelawan/daftar_acara/" . $this->session->userdata('id_relawan'); ?>">Daftar Acara</a><br><br>
+                  <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                      <thead>
+                        <tr>
+                          <th>No</th>
+                          <th>Acara</th>
+                          <th>Status</th>
+                          <th>Aksi</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <?php
+                          $no = 1;
+                          foreach ($data as $dra) :
+                          ?>
+                            <td><?php echo $no; ?></td>
+                            <td><?php echo $dra['nama']; ?></td>
+                            <td>
+                              <?php
+                              $s = $dra['status'];
+                              if ($s == 0) echo "Belum dikonfirmasi";
+                              else if ($s == 1) echo "Diterima";
+                              else echo "Ditolak";
+                              ?>
+                            <td>
+                              <a class="btn btn-danger" href="<?= base_url() . "index.php/dashboardrelawan/hapus_acara/" . $dra['id_relawan_acara']; ?>">Hapus</a>
+                            </td>
+                        </tr>
+                      <?php
+                            $no++;
+                          endforeach;
+                      ?>
+                      </tbody>
+
+                    </table>
+                  </div>
                 </div>
               </div>
 
@@ -183,6 +220,12 @@
   <!-- Custom scripts for all pages-->
   <script src="<?php echo base_url() . "assets/"; ?>js/sb-admin-2.min.js"></script>
 
+  <!-- Page level plugins -->
+  <script src="<?php echo base_url() . "assets/"; ?>vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="<?php echo base_url() . "assets/"; ?>vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="<?php echo base_url() . "assets/"; ?>js/demo/datatables-demo.js"></script>
 
 </body>
 

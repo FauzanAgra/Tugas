@@ -106,7 +106,7 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+            <h1 class="h3 mb-0 text-gray-800">PROFIL</h1>
           </div>
 
           <!-- Content Row -->
@@ -116,11 +116,36 @@
               <!-- Approach -->
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Lihat / Edit Profil</h6>
                 </div>
                 <div class="card-body">
-                  <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce CSS bloat and poor page performance. Custom CSS classes are used to create custom components and custom utility classes.</p>
-                  <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
+                  <form action="<?= base_url() . "index.php/dashboardrelawan/proses_edit_profil/" . $this->session->userdata('id_relawan'); ?>" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="id_relawan" value="<?= $id_relawan; ?>"><br>
+                    Nama Lengkap : <br>
+                    <input class="form-control" type="text" name="nama_lengkap" value="<?= $nama_lengkap; ?>"><br><br>
+                    Username : <br>
+                    <input class="form-control" type="text" name="username" value="<?= $username; ?>"><br><br>
+                    Email : <br>
+                    <?= $email; ?><br><br>
+                    Tempat Lahir : <br>
+                    <input class="form-control" type="text" name="tempat_lahir" value="<?= $tempat_lahir; ?>"><br><br>
+                    Tanggal Lahir : <br>
+                    <input class="form-control" type="text" name="tanggal_lahir" value="<?= $tanggal_lahir; ?>"> Format : YYY-BB-HH<br><br>
+                    Alamat : <br>
+                    <textarea class="form-control" name="alamat"><?= $alamat; ?> </textarea><br><br>
+                    Nomor Handphone : <br>
+                    <input class="form-control" type="text" name="no_hp" value="<?= $no_hp; ?>"><br><br>
+                    Foto : <br>
+                    <img src="<?= base_url() . $foto ?>" width="300px"><br><br>
+                    <div class="custom-file row ml-0">
+                      <div class="col-lg-5 ">
+                        <input type="file" class="custom-file-input" id="inputGroupFile01" name="foto">
+                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                      </div>
+                    </div><br><br>
+                    <input class="btn btn-primary" type="submit" value="Edit">
+
+                  </form>
                 </div>
               </div>
 
@@ -174,14 +199,14 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="<?php echo base_url() . "assets/"; ?>vendor/jquery/jquery.min.js"></script>
-  <script src="<?php echo base_url() . "assets/"; ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="<?php echo base_url() . "assets/"; ?>vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="<?php echo base_url() . "assets/"; ?>js/sb-admin-2.min.js"></script>
+  <script src="../js/sb-admin-2.min.js"></script>
 
 
 </body>
