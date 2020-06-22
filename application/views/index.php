@@ -357,8 +357,11 @@
                   <p class="help-block text-danger"></p>
                 </div>
                 <div class="form-group">
-                  <input type="email" name="email" class="form-control" id="email" type="email" placeholder="Email *" required="required" data-validation-required-message="Masukkan email">
+                  <input type="email" name="email" id="email" class="form-control" id="email" type="email" placeholder="Email *" required="required" data-validation-required-message="Masukkan email">
                   <p class="help-block text-danger"></p>
+                  <div id="result-email">
+
+                  </div>
                 </div>
               </div>
               <div class="col-md-6">
@@ -537,7 +540,25 @@
 
   <!-- Custom scripts for this template -->
   <script src="<?php echo base_url() . "assets/"; ?>js/agency.min.js"></script>
-
+  <script>
+    $("#email").change(function() {
+      var emailnya = $("#email").val();
+      $.ajax({
+        type: "POST",
+        data: {
+          email: emailnya
+        },
+        url: '<?= base_url(); ?>index.php/depan/email_ada',
+        success: function(msg) {
+          if (msg == 1) {
+            $('#result-email').html('<label style="color: red;">* Maaf, Email Sudah Ada</label>');
+          } else {
+            $('#result-email').html('<label style="color: green;">Maaf, Email Berhasil</label>');
+          }
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>

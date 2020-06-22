@@ -38,4 +38,12 @@ class Mymodel extends CI_Model
         $res = $this->db->query("SELECT a.nama, ra.id_acara, ra.status, ra.id_relawan_acara FROM relawan_acara ra JOIN acara a ON ra.id_acara = a.id_acara WHERE ra.id_relawan='$id_relawan'");
         return $res->result_array();
     }
+
+    public function email_ada_gak($email)
+    {
+        $sql = "SELECT count(email) as c FROM relawan where email = '$email'";
+        $query = $this->db->query($sql);
+        $res = $query->result_array();
+        return $res[0]['c'];
+    }
 }

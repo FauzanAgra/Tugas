@@ -56,4 +56,15 @@ class Depan extends CI_Controller
             $this->index();
         }
     }
+
+    public function email_ada()
+    {
+        $this->load->model('mymodel');
+        $email = $this->input->post('email');
+        if ($this->mymodel->email_ada_gak($email) > 0) {
+            echo '1';
+        } else {
+            echo '0';
+        }
+    }
 }

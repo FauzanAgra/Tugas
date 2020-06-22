@@ -15,8 +15,11 @@
   <link href="<?php echo base_url() . "assets/"; ?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-  <!-- Custom styles for this template-->
+  <!-- Custom styles for this tempate-->
   <link href="<?php echo base_url() . "assets/"; ?>css/sb-admin-2.css" rel="stylesheet">
+
+  <!-- Custom styles for select2-->
+  <link href="<?php echo base_url() . "assets/"; ?>plugins/select2/select2.min.css" rel="stylesheet">
 
 </head>
 
@@ -120,8 +123,8 @@
                 </div>
                 <div class="card-body">
                   <form action="<?php echo base_url() . "index.php/dashboardrelawan/proses_daftar_acara/" . $this->session->userdata('id_relawan'); ?>" method="POST">
-                    Acara<br>
-                    <select class="form-control" name="acara">
+                    Acara<br><br>
+                    <select class="form-control" name="acara" id="acara">
                       <?php
                       foreach ($data as $da) :
                       ?>
@@ -130,7 +133,7 @@
                       endforeach;
                       ?>
                     </select>
-                    <br>
+                    <br><br>
                     <input class="btn btn-primary form-control" type="submit" value="Daftar">
                   </form>
                 </div>
@@ -195,6 +198,12 @@
   <!-- Custom scripts for all pages-->
   <script src="<?php echo base_url() . "assets/"; ?>js/sb-admin-2.min.js"></script>
 
+  <!-- Custom styles for select2-->
+  <script src="<?php echo base_url() . "assets/"; ?>plugins/select2/select2.full.min.js"></script>
+
+  <script>
+    $('#acara').select2();
+  </script>
 
 </body>
 
